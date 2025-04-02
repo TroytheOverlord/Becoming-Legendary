@@ -11,11 +11,14 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private TextAsset inkJSON;
 
     private bool playerInRange;
+    private bool isShopkeeper;
 
     private void Awake()
     {
         playerInRange = false;
         visualCue.SetActive(false);
+
+        isShopkeeper = gameObject.CompareTag("Shopkeeper");
     }
 
     private void Update()
@@ -25,7 +28,7 @@ public class DialogueTrigger : MonoBehaviour
             visualCue.SetActive(true);
             if(Input.GetKeyDown(KeyCode.E))
             {
-                DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                DialogueManager.GetInstance().EnterDialogueMode(inkJSON, isShopkeeper);
             }
         }
 

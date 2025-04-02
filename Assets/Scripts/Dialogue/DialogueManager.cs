@@ -11,16 +11,13 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-
-    /*
-    [Header("Choices UI")]
-    [SerializeField] private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText;
-    */
+    [SerializeField] private TMP_FontAsset customFont;
 
     private Story currentStory;
 
     public bool dialogueIsPlaying {get; private set; }
+
+    private bool openShopAfterDialogue = false;
 
    private static DialogueManager instance;
 
@@ -45,16 +42,10 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
-        /*
-        // Gets the choices text
-        choicesText = new TextMeshProUGUI[choices.Length];
-        int index = 0;
-        foreach(GameObject choice in choices)
+        if (customFont != null)
         {
-            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
-            index++;
+            dialogueText.font = customFont;
         }
-        */
    }
 
    private void Update()
@@ -72,7 +63,7 @@ public class DialogueManager : MonoBehaviour
         }
    }
 
-   public void EnterDialogueMode(TextAsset inkJSON)
+   public void EnterDialogueMode(TextAsset inkJSON, bool isShopkeeper)
    {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
@@ -80,6 +71,8 @@ public class DialogueManager : MonoBehaviour
 
         // Stops Player Movemnet During Dialogue
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().canMove = false;
+
+        openShopAfterDialogue = isShopkeeper;
 
         ContinueStory();
    }
@@ -100,9 +93,6 @@ public class DialogueManager : MonoBehaviour
         {
             // Sets text fo the current dialogue line 
             dialogueText.text = currentStory.Continue();
-
-            // Display choices, if any for this dialogue line 
-            //DisplayChoices();
         }
 
         else
@@ -110,32 +100,5 @@ public class DialogueManager : MonoBehaviour
             ExitDialogueMode();
         }
    }
-
-   /*private void DisplayChoices()
-   {
-        List<Choice> currentChoices = currentStory.currentChoices;
-
-        if(currentChoices.Count > choices.Length)
-        {
-            Debug.LogError("More choices were given than the UI can support. Number of choices: " + currentChoices.Count);
-        }
-
-        int index = 0;
-
-        //Enables and Initialize the choices up to the amount of choices for this line of dialogue
-        foreach(Choice choice in currentChoices)
-        {
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            index++;
-        }
-
-        // Goes through teh remaining choices the UI supports and make sure they're hidden
-        for(int i = index; i < choices.Length; i++)
-        {
-            choices[i].gameObject.SetActive(false);
-        }
-   }
-   */
    
 }

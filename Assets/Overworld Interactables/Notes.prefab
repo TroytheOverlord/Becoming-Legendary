@@ -143,5 +143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317ed9b01b4e1434ca996e9ec751b8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteText: 
+  noteText: "For as long as anyone can remember, humanity has been at war with the
+    Malborn\u2014accursed monsters born in regions no man would dare to tread. With
+    overwhelming strength and animalistic features, they have terrorized humanity
+    since time immemorial. No one truly knows the origins of the Malborn or what
+    grudge they bear against mankind. The war between the two races has been long
+    and bloody, with humanity suffering the brunt of the conflict. Will there ever
+    come a day when humanity rises above the Malborn, or are we doomed to be driven
+    to extinction?"
   noteUI: {fileID: 0}

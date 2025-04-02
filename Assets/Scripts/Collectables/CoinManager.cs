@@ -10,20 +10,20 @@ public class CoinManager : MonoBehaviour
     public int coinCount;
     public TextMeshProUGUI coinText;
     public GameObject gate;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        coinText.text = ": " + coinCount.ToString();
-
-        if(coinCount == 4)
+        //if(playerInventory != null)
         {
-            Destroy(gate);
+            coinText.text = ": " + coinCount.ToString();
+
+            if(coinCount == 5)
+            {
+                Destroy(gate);
+            }
         }
+        
     }
 }

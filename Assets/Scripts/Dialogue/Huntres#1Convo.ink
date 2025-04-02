@@ -1,0 +1,15 @@
+...
+- Huntress: *panting* I can’t believe I managed to make it back here 
+- Huntress: I thought I was finally gonna kick the bucket
+- Alexander: What’s your problem
+- Huntress: (eugh a kid) my problem kid is that I almost died out there,
+- Huntress: this war is really running me ragged
+- Alexander: *pft* sounds like you weren’t cut out to stand on the frontlines, 
+- Alexander: but me I’m gonna make a name for myself out there and become a legend
+- Huntress: I’m too tired to argue with you but don’t you know what they say about legends dying young. 
+-Huntress: You sure a couple gold coins toss your way worth your life
+- Alexander: Trust me I don’t plan on dying anytime soon, I’ll never stop till I achieve my dream…no a mere dream doesn’t begin to convey what it is I want. 
+- Alexander: My ambition will continue to drive me ever forward until it’s made reality. I’ll become someone with the power to move the world
+- Huntress: (huh well I can definitely see the determination in his eyes) Well I can clearly tell talking you out of this is impossible so I’ll leave you with some words of wisdom
+- Huntress: “There’s no shame in running away living to fight another day is far more valuable than dying due to your own arrogance”
+- Alexander: Hmm wise words I doubt I’ll need them but I’ll heed nonetheless

@@ -11,11 +11,29 @@ public class PlayerMovement : MonoBehaviour
 
    public bool canMove = true;
 
-   public CoinManager cm;
+   private Animator anim;
 
-   [SerializeField] private Rigidbody2D body;
+   public CoinManager cm;
+   //public PlayerInventory playerInventory;
+
+   public bool isInvincible = false;
+
+   [SerializeField] public Rigidbody2D body;
    [SerializeField] private Transform groundCheck;
    [SerializeField] private LayerMask groundLayer;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+
+        //playerInventory = GetComponent<PlayerInventory>();
+        if (PlayerData.Instance != null && PlayerData.Instance.lastOverworldPos != Vector3.zero)
+        {
+            transform.position = PlayerData.Instance.lastOverworldPos;
+        }
+
+        
+    }
 
     void Update()
     {
@@ -26,17 +44,32 @@ public class PlayerMovement : MonoBehaviour
         }
 
         horizontal = Input.GetAxis("Horizontal");
+        
+        // Set isMoving only when horizontal movement is detected
+    anim.SetBool("isMoving", Mathf.Abs(horizontal) > 0.01f);
 
-        if(Input.GetButtonDown("Jump") && isGrounded())
-        {
-            body.velocity = new Vector2(body.velocity.x, jump);
-        }
+    // Jumping logic
+    if (Input.GetButtonDown("Jump") && isGrounded())
+    {
+        body.velocity = new Vector2(body.velocity.x, jump);
+        anim.SetBool("isGrounded", false);
+        anim.SetBool("isJumping", true);
+        anim.SetBool("isFalling", false); 
+    }
 
-        if(Input.GetButtonUp("Jump") && body.velocity.y > 0f)
-        {
-            body.velocity = new Vector2(body.velocity.x, body.velocity.y * 0.5f);
-        }
+    // Falling logic
+    if (!isGrounded() && body.velocity.y < 0)
+    {
+         anim.SetBool("isGrounded", false);
+        anim.SetBool("isFalling", true);
+        anim.SetBool("isJumping", false);
+    }
 
+    if(isGrounded())
+    {
+        anim.SetBool("isFalling", false);
+        anim.SetBool("isGrounded", true);
+    } 
         Flip();
     }
 
@@ -51,8 +84,9 @@ public class PlayerMovement : MonoBehaviour
         body.velocity = new Vector2(horizontal * speed, body.velocity.y);
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
+        anim.SetBool("isGrounded", true);
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
@@ -73,6 +107,25 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             cm.coinCount++;
+/*
+            if(playerInventory != null)
+            {
+                playerInventory.goldAmount += 1;
+            }
+*/
         }
     }
+
+    public void StartInvincibility()
+    {
+        StartCoroutine(InvincibilityFrames());
+    }
+
+    IEnumerator InvincibilityFrames()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(2f); 
+        isInvincible = false;
+    }
+
 }
