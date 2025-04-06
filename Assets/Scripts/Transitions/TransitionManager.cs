@@ -31,6 +31,12 @@ public class TransitionManager : MonoBehaviour
             transitionAnim.SetTrigger("end");
             yield return new WaitForSeconds(1.5f);
         }
+
+        else
+        {
+            Debug.LogWarning("Transition Animator not assigned!");
+        }
+
         SceneManager.LoadScene(sceneName);
     }
 }

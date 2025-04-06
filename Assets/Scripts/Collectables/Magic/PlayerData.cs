@@ -11,6 +11,8 @@ public class PlayerData : MonoBehaviour
 
 
     public Vector3 lastOverworldPos;
+    public bool isFirstTimeInLevel3 = true;
+
 
     private void Awake()
     {

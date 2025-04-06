@@ -18,7 +18,7 @@ public class DialogueTrigger : MonoBehaviour
         playerInRange = false;
         visualCue.SetActive(false);
 
-        isShopkeeper = gameObject.CompareTag("Shopkeeper");
+        
     }
 
     private void Update()
@@ -31,6 +31,13 @@ public class DialogueTrigger : MonoBehaviour
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON, isShopkeeper);
             }
         }
+
+
+        else if(Input.GetKeyDown(KeyCode.T) && DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            DialogueManager.GetInstance().ExitDialogueMode();
+        }
+
 
         else
         {

@@ -32,7 +32,24 @@ public class PlayerMovement : MonoBehaviour
             transform.position = PlayerData.Instance.lastOverworldPos;
         }
 
-        
+        if (PlayerData.Instance != null && PlayerData.Instance.lastOverworldPos != Vector3.zero)
+        {
+            transform.position = PlayerData.Instance.lastOverworldPos;
+        }
+
+        if (PlayerData.Instance != null)
+        {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Level 3" && PlayerData.Instance.isFirstTimeInLevel3)
+            {
+                // Set to beginning of Level 3
+                transform.position = new Vector3(0f, 0f, 0f); // <-- Replace with your level's start position
+                PlayerData.Instance.isFirstTimeInLevel3 = false;
+            }
+            else if (PlayerData.Instance.lastOverworldPos != Vector3.zero)
+            {
+                transform.position = PlayerData.Instance.lastOverworldPos;
+            }
+        }        
     }
 
     void Update()
@@ -41,6 +58,16 @@ public class PlayerMovement : MonoBehaviour
         if(DialogueManager.GetInstance().dialogueIsPlaying)
         {
             return;
+        }
+
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 15f;
+        }
+
+        else
+        {
+            speed = 8f;
         }
 
         horizontal = Input.GetAxis("Horizontal");

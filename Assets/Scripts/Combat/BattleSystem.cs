@@ -84,7 +84,7 @@ public class BattleSystem : MonoBehaviour
 
          // Store player position before battle starts
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (player != null && sceneName != "Level 1")
         {
             lastPlayerPosition = player.transform.position;
         }
@@ -206,6 +206,9 @@ public class BattleSystem : MonoBehaviour
         else if(states == BattleStates.LOST)
         {
             dialogueText.text = "You were defeated";
+        
+            dialogueText.text = "I'm not done yet";
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
