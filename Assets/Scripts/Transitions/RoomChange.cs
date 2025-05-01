@@ -15,6 +15,10 @@ public class RoomChange : MonoBehaviour
 
         if (other.CompareTag("Player") && !player.isInvincible)
         {
+            var overworldEnemy = GetComponentInParent<Enemy>();
+            if (overworldEnemy != null)
+            PlayerData.Instance.currentBattleEnemyID = overworldEnemy.enemyID;
+
             // Store last overworld position
             PlayerData.Instance.lastOverworldPos = other.transform.position;
 
@@ -22,6 +26,12 @@ public class RoomChange : MonoBehaviour
             StartCoroutine(RoomTransition());
         }
     }
+
+    public void StartGame()
+    {
+        StartCoroutine(RoomTransition());
+    }
+    
 
     IEnumerator RoomTransition()
     {

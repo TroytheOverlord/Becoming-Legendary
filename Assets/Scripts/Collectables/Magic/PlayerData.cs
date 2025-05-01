@@ -12,6 +12,13 @@ public class PlayerData : MonoBehaviour
 
     public Vector3 lastOverworldPos;
     public bool isFirstTimeInLevel3 = true;
+    public bool isFirstTimeInLevel5  = true;
+
+    // IDs of enemies the player has already defeated:
+    public List<string> defeatedEnemies = new List<string>();
+
+    // (Optionally) the ID of the enemy you’re about to fight:
+    public string currentBattleEnemyID;
 
 
     private void Awake()

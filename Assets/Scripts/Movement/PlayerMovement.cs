@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
    private float horizontal;
    private float speed = 8f;
    private float jump = 12f;
+   public float fallMultiplier   = 2.5f;  
+    public float lowJumpMultiplier = 2f;
    private bool isFacingRight = true;
 
    public bool canMove = true;
@@ -14,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
    private Animator anim;
 
    public CoinManager cm;
-   //public PlayerInventory playerInventory;
+   
 
    public bool isInvincible = false;
 
@@ -26,31 +28,30 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        //playerInventory = GetComponent<PlayerInventory>();
+        // Set default spawn to last saved position, if available
         if (PlayerData.Instance != null && PlayerData.Instance.lastOverworldPos != Vector3.zero)
         {
             transform.position = PlayerData.Instance.lastOverworldPos;
         }
 
-        if (PlayerData.Instance != null && PlayerData.Instance.lastOverworldPos != Vector3.zero)
-        {
-            transform.position = PlayerData.Instance.lastOverworldPos;
-        }
-
+        // Check if we need to override position for Level 3 or 5
         if (PlayerData.Instance != null)
         {
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Level 3" && PlayerData.Instance.isFirstTimeInLevel3)
+            string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+            if (currentScene == "Level 3" && PlayerData.Instance.isFirstTimeInLevel3)
             {
-                // Set to beginning of Level 3
-                transform.position = new Vector3(0f, 0f, 0f); // <-- Replace with your level's start position
+                transform.position = new Vector3(0f, 0f, 0f); // Replace with real Level 3 spawn
                 PlayerData.Instance.isFirstTimeInLevel3 = false;
             }
-            else if (PlayerData.Instance.lastOverworldPos != Vector3.zero)
+            else if (currentScene == "Level 5" && PlayerData.Instance.isFirstTimeInLevel5)
             {
-                transform.position = PlayerData.Instance.lastOverworldPos;
+                transform.position = new Vector3(0f, 0f, 0f); // Replace with real Level 5 spawn
+                PlayerData.Instance.isFirstTimeInLevel5 = false;
             }
-        }        
+        }
     }
+
 
     void Update()
     {
@@ -102,13 +103,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-         if(!canMove)
-        {
-            body.velocity = Vector2.zero;
-            return;
-        }
+         if (!canMove)
+    {
+        body.velocity = Vector2.zero;
+        return;
+    }
 
+        // move left/right
         body.velocity = new Vector2(horizontal * speed, body.velocity.y);
+
+        // now tweak your vertical motion for a floaty jump:
+        if (body.velocity.y < 0)
+        {
+            // we’re falling — apply extra gravity to speed it up
+            body.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (body.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            // you let go of jump while rising — give a “low” jump
+            body.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+        }
     }
 
     public bool isGrounded()
@@ -134,12 +148,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
             cm.coinCount++;
-/*
-            if(playerInventory != null)
-            {
-                playerInventory.goldAmount += 1;
-            }
-*/
         }
     }
 

@@ -1,3 +1,4 @@
+...
 Alexander: Sweet I can get through the gate now 
 
 Guard: Hey wait that's my gold 

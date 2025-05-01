@@ -31,7 +31,7 @@ public class Note : MonoBehaviour
         noteUI.GetComponentInChildren<TextMeshProUGUI>().text = noteText;
 
         //Shows text for 5 seconds
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         // Hides the UI again
         noteUI.SetActive(false);

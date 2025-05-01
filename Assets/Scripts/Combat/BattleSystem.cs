@@ -58,7 +58,7 @@ public class BattleSystem : MonoBehaviour
     // Scene Variables
     public Scene currentScene;
     private string sceneName;
-    public Animator transitionAnim;
+    private Animator transitionAnim;
 
 
     // Character Animator
@@ -437,6 +437,15 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator VictorySequence()
     {
         dialogueText.text = "You won the battle!";
+
+        // Mark that ID defeated
+        var id = PlayerData.Instance.currentBattleEnemyID;
+        if (!string.IsNullOrEmpty(id) && 
+            !PlayerData.Instance.defeatedEnemies.Contains(id))
+        {
+            PlayerData.Instance.defeatedEnemies.Add(id);
+        }
+
         StartCoroutine(RoomTransition());
 
         // Restore player's position
@@ -589,8 +598,17 @@ public class BattleSystem : MonoBehaviour
 
      IEnumerator RoomTransition()
     {
-        transitionAnim.SetTrigger("end");
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(sceneName);
+        if(sceneName == "Level 2")
+        {
+             yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("Level 3");
+        }
+
+        else if(sceneName == "Level 4")
+        {
+             yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("End Scene");
+        }
+       
     }
 }
