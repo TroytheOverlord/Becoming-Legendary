@@ -1,6 +1,6 @@
 # Becoming Legendary
 
-**Becoming Legendary** is a 2D side-scrolling action RPG prototype built in Unity (C#). It combines classic platformer exploration with turn-based combat, offering a hybrid gameplay loop that emphasizes both skillful movement and tactical decision-making.
+Becoming Legendary is a 2D side-scrolling action RPG prototype built in Unity (C#). It combines classic platformer exploration with turn-based combat, offering a hybrid gameplay loop that emphasizes both skillful movement and tactical decision-making.
 ---
 
 ## Features
@@ -55,15 +55,11 @@ UI: Custom menus for combat, inventory, shops, and dialogue
 
 ## Story
 
-*Introduce your story, main characters, and world here!*
+*You play as Alexander, an 18 boy who is looking to enlist as a soldier in the ongoing war against the Malborn to make a name for himself as a hero of the nation and make his mark on the world. Players take control of Alexander as he leaves his village to set out for the big city to enlist and begin his journey to greatness*
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-*Specify your license here (e.g., MIT, GPL, etc.).*
 
 ## Credits
 
@@ -72,8 +68,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - Programming: **C#**
 
 ## Links
-
-- [itch.io page (coming soon)](https://itch.io)
 - [GitHub Repository](https://github.com/TroytheOverlord/BecomingLegendary)
 
 ---
