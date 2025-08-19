@@ -1,39 +1,57 @@
 # Becoming Legendary
 
-**Becoming Legendary** is a 2D platformer and turn-based combat hybrid video game with a strong narrative focus. Experience an immersive story as you journey through unique worlds, solve platforming challenges, and engage in strategic battles.
+**Becoming Legendary** is a 2D side-scrolling action RPG prototype built in Unity (C#). It combines classic platformer exploration with turn-based combat, offering a hybrid gameplay loop that emphasizes both skillful movement and tactical decision-making.
+---
 
 ## Features
 
-- **Hybrid Gameplay:** Combines classic 2D platforming with turn-based combat mechanics.
-- **Narrative-Driven:** Rich story and character development.
-- **Handcrafted Levels:** Explore diverse environments, each with unique challenges and enemies.
-- **Strategic Battles:** Engage in thoughtful turn-based combat sequences.
+Platforming Exploration
+
+    - Navigate 2D environments with side-scrolling controls
+
+    - Enter and exit buildings with seamless scene transitions
+
+Turn-Based Combat System
+
+    - Attack, guard, and use items/spells against enemies
+
+    - Guarding reduces incoming damage and nullifies weaknesses
+
+    - Enemy weaknesses create tactical opportunities
+
+Inventory System
+
+    - Purchase potions, MP restoratives, and spell scrolls
+
+    - Items carry between exploration and battle scenes
+
+    - Collectible notes expand the world’s lore
+
+Magic & Spell System
+
+    - Learn new spells from scrolls found in the overworld
+
+    - Use MP strategically during combat
 
 ## Screenshots
+<img width="1440" height="808" alt="Screenshot 2025-08-18 at 8 16 28 PM" src="https://github.com/user-attachments/assets/8af93e19-10ff-47e1-94cb-3a9ee9f1b0c1" />
 
-*Add screenshots or gifs of gameplay here!*
 
-## Platforms
+<img width="781" height="504" alt="Screenshot 2025-04-07 at 1 09 55 PM" src="https://github.com/user-attachments/assets/cd4b7e60-1cb9-44c6-8afe-a7abc6bec0d8" />
 
-- **Mac OS**
-- Game will be available on [itch.io](https://itch.io) soon.
+<img width="784" height="521" alt="Screenshot 2025-04-07 at 1 10 46 PM" src="https://github.com/user-attachments/assets/df120d3b-c7bc-4045-93cc-c73f9bb88c4e" />
 
-## Built With
+## 🛠️ Tech & Systems
 
-- **Unity** (game engine)
-- **C#**
-- **Visual Studio Code** (development environment)
+Engine: Unity (C#)
 
-## Getting Started
+Scene Management: Exploration ↔ Combat transitions
 
-*Instructions for running the game locally (update as needed):*
+Data Persistence: Inventory, spells, and notes carry across gameplay
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/TroytheOverlord/BecomingLegendary.git
-    ```
-2. Open the project in Unity (version X.Y.Z or later).
-3. Build and run for Mac OS.
+OOP Principles: Player, enemy, item, and combat systems built with modular class structures
+
+UI: Custom menus for combat, inventory, shops, and dialogue
 
 ## Story
 
@@ -59,5 +77,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - [GitHub Repository](https://github.com/TroytheOverlord/BecomingLegendary)
 
 ---
-
-*Feel free to add more sections like FAQs, changelog, or acknowledgments!*
