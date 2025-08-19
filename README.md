@@ -66,6 +66,10 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - Development: **TroytheOverlord**
 - Engine: **Unity**
 - Programming: **C#**
+- **Character/Background Sprites** – Free asset pack from itch.io.  
+- **Background Music** – Royalty-free, non-copyright track from a free music site.  
+
+*Note: Assets are placeholders for prototyping*
 
 ## Links
 - [GitHub Repository](https://github.com/TroytheOverlord/BecomingLegendary)
